@@ -45,7 +45,7 @@ def thread_work(endpoint, thread_id)
   rescue e
     puts "Error: #{e}"
   end
-  sleep rand(80..300) / 1000.0 # Sleep for 100-300 ms
+  sleep rand(80..300) / 1000.0 # Sleep for 80-300 ms
 end
 
 def help
@@ -84,7 +84,7 @@ def start_work(endpoint, &block)
     threads << Thread.new do
       N_PER_THREAD.times do |iter|
         thread_work(uri, thread_id) { block.call }
-        puts "[THREAD #{thread_id}] Submissions: #{iter + 1}" if iter % 5 == 0
+        puts "[THREAD #{thread_id}] Submissions: #{iter + 1} /#{N_PER_THREAD}" if iter % 5 == 0
       end
     end
   end

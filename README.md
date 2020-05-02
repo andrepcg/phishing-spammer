@@ -41,3 +41,7 @@ end
 ```
 
 Also, in line 44 you might need to change how the data is posted. The one included simply uses `Net::HTTP.post_form` to post form data.
+
+## To do
+
+- Pass a list of proxies and use them when doing a request

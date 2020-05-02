@@ -73,6 +73,11 @@ THREAD_COUNT = ARGV[1].to_i
 N_PER_THREAD = TIMES_TO_SPAM / THREAD_COUNT
 
 def start_work(endpoint, &block)
+  unless block_given?
+    puts "start_work needs a block to generate data"
+    Kernel.exit
+  end
+
   uri = URI.parse(endpoint)
   threads = []
   THREAD_COUNT.times do |thread_id|
